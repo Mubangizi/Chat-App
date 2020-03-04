@@ -6,9 +6,18 @@
         <title>Testing</title>
     </head>
     <body>
-        <h1>Testing</h1>
-        <script type="text/javascript">
-            var socket = io();
-        </script>
+        <div id = "login-area">
+            <div id = "login-text"><h1>Login Page</h1></div>
+            <div id = "login-form-area">
+                <form id = "login-form">
+                    <input type="text" placeholder="Username" autocomplete="off">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
     </body>
+
+    <script type="text/javascript">
+        var socket = io();
+    </script>
 </html>
