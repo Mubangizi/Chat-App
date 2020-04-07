@@ -36,4 +36,9 @@ io.on("connection", function(socket){
         users.splice(users.indexOf(name), 1);
         io.emit("has disconnected", {username: name, usersList:users});
     })
+    // new message event
+    socket.on("new message", function(message){
+        io.emit("new message", message);        //sent message to every socket
+    });
+
 });
