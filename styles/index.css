@@ -102,3 +102,33 @@ body{
    font-weight: bold;
    margin-top: 10px;
 }
+
+#chat-area #message-area{
+    width: calc(80% - 1px);
+    height: 100%;
+    background-color: aquamarine;
+    float: right;
+}
+
+#chat-area #message-area #display-message-area{
+    width: 100%;
+    background-color: blue;
+    height: 90%;
+    border-top: 1px solid transparent ;
+}
+
+#chat-area #message-area #display-message-area #messages{
+    margin: 0;
+    padding: 0;
+}
+
+#chat-area #message-area #display-message-area #messages li{
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+#chat-area #message-area #display-message-area #messages li:nth-child(odd){
+    background-color: #CCC;
+}
+
