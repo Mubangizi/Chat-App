@@ -20,7 +20,19 @@
                 </form>
             </div>
         </div>
-        <div id=test></div>
+        <div id="chat-area">
+            <div id="users-area">
+                <div id="online-users-text">
+                    <h1>Online users:</h1>
+                </div>
+                <div id="online-users">
+                    <ul id="users">
+                        <li>Tom</li>
+                        <li>Zed</li>
+                     </ul>
+                </div>
+            </div>
+        </div>
     </body>
 
     <script type="text/javascript">
@@ -32,7 +44,7 @@
                 alert("Invalide username");
             }else{
                 $("#login-area").hide();
-                $("#test").show();
+                $("#chat-area").show();
             }
         })
 
