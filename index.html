@@ -26,23 +26,13 @@
                     <h1>Online users:</h1>
                 </div>
                 <div id="online-users">
-                    <ul id="users">
-                        <li>Tom</li>
-                        <li>Zed</li>
-                        <li>Mat</li>
-                        <li>Rod</li>
-                     </ul>
+                    <ul id="users"> </ul>
                 </div>
             </div>
 
             <div id="message-area">
                 <div id="display-message-area">
-                    <ul id="messages">
-                        <li>message</li>
-                        <li>message two</li>
-                        <li>message three</li>
-                        <li>message four</li>
-                    </ul>
+                    <ul id="messages"></ul>
                 </div>
 
                 <div id="message-form-area">
@@ -57,16 +47,42 @@
 
     <script type="text/javascript">
         var socket = io();
+        
+        function updateUsers(list){
+            for(var i = 0; i< list.length; i++){
+                $("#users").append("<li><b>" + list[i] + "</b></li>");
+            }
+        }
 
         $("#login-form").submit(function(event){
             event.preventDefault();
-            if($("username").val() == "" || $("username").val() == " " ){
-                alert("Invalide username");
+            if($("#user-name").val() == "" || $("#user-name").val() == " " ){
+                alert("Invalid username");
             }else{
+                // Get User name Value on login
+                $username = $("#user-name").val();
+                // show chat area
                 $("#login-area").hide();
                 $("#chat-area").show();
-            }
-        })
+                
+                // emit event "has connected" to server
+                socket.emit("has connected", $username)
 
+            }
+        });
+        // Add users to the list items
+        socket.on("has connected", function(data){
+            $("#users").html("");    //clear list for users whenever a user disconnects
+            updateUsers(data.usersList);
+            $("#messages").append("<li><i><b>"+ data.username +"</b> has connected </i></li>"); // Notify when someone connects
+        });
+
+        // update user list on user disconnected
+        socket.on("has disconnected", function(data){
+            $("#users").html("");
+            updateUsers(data.usersList);
+            $("#messages").append("<li><i><b>"+ data.username +"</b> has disconnected </i></li>");
+        })
+        
     </script>
 </html>
