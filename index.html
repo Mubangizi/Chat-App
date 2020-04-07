@@ -53,9 +53,9 @@
                 $("#users").append("<li><b>" + list[i] + "</b></li>");
             }
         }
-
+        // LOGIN SUBMIT
         $("#login-form").submit(function(event){
-            event.preventDefault();
+            event.preventDefault();     //Not to give requests to the http server
             if($("#user-name").val() == "" || $("#user-name").val() == " " ){
                 alert("Invalid username");
             }else{
@@ -70,6 +70,19 @@
 
             }
         });
+
+        // MESSAGE SUBMIT
+        $("#message-form").submit(function(event){
+            event.preventDefault();
+            if($("#message").val() == "" || $("message").val() == " " ){
+                alert("You can not send empty messages");
+            }else{
+                socket.emit("new message", $("#message").val());
+            }
+        });
+
+
+
         // Add users to the list items
         socket.on("has connected", function(data){
             $("#users").html("");    //clear list for users whenever a user disconnects
@@ -83,6 +96,11 @@
             updateUsers(data.usersList);
             $("#messages").append("<li><i><b>"+ data.username +"</b> has disconnected </i></li>");
         })
+
+        // new message event
+        socket.on("new message", function(message){
+            io.emit("new message", message);        //sent message to every socket
+        });
         
     </script>
 </html>
