@@ -78,7 +78,7 @@ body{
 #chat-area #users-area #online-users-text{
     margin: 0;
     padding: 0;
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -144,12 +144,12 @@ body{
     outline: none;
     outline-offset: 0;
     background-color: transparent;
-    color: #ccc;
+    color: #fff;
     border: 0;
 }
 
 #chat-area #message-area #message-form-area #message-form #message::placeholder{
-    color: #ccc;
+    color: #fff;
 }
 
 #chat-area #message-area #message-form-area #message-form #message-submit{

@@ -18,4 +18,4 @@ run `npm install`
 
 ### Start the Application
 
-Then Run `npm start` to start the Application
+Then Run `npm start` or `node server` to start the Application
