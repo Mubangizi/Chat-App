@@ -77,7 +77,8 @@
             if($("#message").val() == "" || $("message").val() == " " ){
                 alert("You can not send empty messages");
             }else{
-                socket.emit("new message", $("#message").val());
+                socket.emit("new message", {username: $username, message:$("#message").val()});
+                $("message").val("");
             }
         });
 
@@ -98,8 +99,8 @@
         })
 
         // new message event
-        socket.on("new message", function(message){
-            $("#messages").append("<li><i>"+ message + "</i></li>");
+        socket.on("new message", function(data){
+            $("#messages").append("<li><i><b>"+ data.username + "</b>: " + data.message + "</i></li>");
         });
         
     </script>
