@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script 
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <script type="text/javascript"  src="socket.io/socket.io.js"> </script>
+
+        <link rel="stylesheet" type="text/css" href="styles/index.css">
+        <title>Testing</title>
+    </head>
+    <body>
+        <div id = "login-area">
+            <div id = "login-text"><h1>Login Page</h1></div>
+            <div id = "login-form-area">
+                <form id = "login-form">
+                    <input id="user-name" type="text" placeholder="Username" autocomplete="off">
+                    <input id = "login-submit" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+        <div id="chat-area">
+            <div id="users-area">
+                <div id="online-users-text">
+                    <h1>Online users:</h1>
+                </div>
+                <div id="online-users">
+                    <ul id="users">
+                        <li>Tom</li>
+                        <li>Zed</li>
+                        <li>Mat</li>
+                        <li>Rod</li>
+                     </ul>
+                </div>
+            </div>
+
+            <div id="message-area">
+                <div id="display-message-area">
+                    <ul id="messages">
+                        <li>message</li>
+                        <li>message two</li>
+                        <li>message three</li>
+                        <li>message four</li>
+                    </ul>
+                </div>
+
+                <div id="message-form-area">
+                    <form id="message-form">
+                        <input id="message" type="text" placeholder="Type your message..." autocomplete="off">
+                        <input id="message-submit" type="submit" value="Send">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        var socket = io();
+
+        $("#login-form").submit(function(event){
+            event.preventDefault();
+            if($("username").val() == "" || $("username").val() == " " ){
+                alert("Invalide username");
+            }else{
+                $("#login-area").hide();
+                $("#chat-area").show();
+            }
+        })
+
+    </script>
+</html>
