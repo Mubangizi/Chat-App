@@ -64,7 +64,8 @@
                 // show chat area
                 $("#login-area").hide();
                 $("#chat-area").show();
-                
+
+                $("#messages").html("");    //Remove old messages on login
                 // emit event "has connected" to server
                 socket.emit("has connected", $username)
 
@@ -78,7 +79,7 @@
                 alert("You can not send empty messages");
             }else{
                 socket.emit("new message", {username: $username, message:$("#message").val()});
-                $("message").val("");
+                $("#message").val("");   //Clear text area on sending a message
             }
         });
 
